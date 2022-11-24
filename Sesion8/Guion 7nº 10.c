@@ -4,7 +4,7 @@
 #define COL 4
 
 int main ( ) {
-    int *p,i,j;
+    int *p,i,j,x=0;
     int  vector [DIM]= {25,40,55,70,85,100,115};
     int tabla [FIL][COL]={15, 25, 35, 45, 115, 125, 135, 145, 215, 225, 235, 245};
 
@@ -29,10 +29,19 @@ int main ( ) {
         }
         printf("\n");
     }
-    printf("\n=====================================\n");
+    printf("=====================================\n");
     for(i=0; i<FIL; i++){
         for(j=0; j<COL; j++){
-            printf("%d ", *(*(tabla+i)));
+            printf("%d ", *((*tabla)+x));
+            x++;
+        }
+        printf("\n");
+    }
+    printf("=====================================\n");
+    p=&tabla[0][0];
+    for(i=0; i<FIL; i++){
+        for(j=0; j<COL; j++){
+            printf("%d ", *p++);
         }
         printf("\n");
     }
