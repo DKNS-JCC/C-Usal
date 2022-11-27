@@ -20,11 +20,13 @@ for (i=0;i<n;i++){
 		m[i][j]=-1;
 }
 
+
 i=0;
 j=n/2;
 m[i][j]=k;
 
 int cand_i, cand_j; //Candidados para proximo valor en f y c
+
 
 for (k=2;k<=n*n;k++){
 	m[i][j]=k;
