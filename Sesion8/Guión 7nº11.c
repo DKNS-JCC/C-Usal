@@ -4,21 +4,21 @@
 int main(){
 
 char frase[100];
-char caracter;
+char letra;
 int i, contador=0;
 
-printf("Introduzca una frase (Max. 100 caracteres) : ");
+printf("Introduzca una frase (Max. 100 letras) : ");
 gets(frase);
-printf("Introduzca un caracter: ");
-scanf("%c", &caracter);
+printf("Introduzca una letra: ");
+scanf("%c", &letra);
 
 for(i=0; i<strlen(frase); i++){
-    if(*(frase+i)==caracter){
+    if(*(frase+i)==letra){
         contador++;
     }
 }
 
-printf("El caracter %c aparece %d veces en la frase", caracter, contador);
+printf("La letra %c aparece %d veces en la frase", letra, contador);
 
 return 0;
 }
