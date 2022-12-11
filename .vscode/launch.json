@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/jorge/Desktop/Git/C-Usal",
-      "program": "c:/Users/jorge/Desktop/Git/C-Usal/build/Debug/outDebug",
+      "cwd": "c:/Users/jorge/Desktop/Git/C-Usal/Sesion9",
+      "program": "c:/Users/jorge/Desktop/Git/C-Usal/Sesion9/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
