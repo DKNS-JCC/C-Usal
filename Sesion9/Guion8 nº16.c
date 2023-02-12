@@ -16,7 +16,6 @@ int main (){
     printf("\nIntroduzca un numero: ");
     scanf("%d", &n);
     printf("\nLa suma de los numeros pares hasta %d es %d", n, sumapar(n));
-
     printf("\nIntroduzca un numero: ");
     scanf("%d", &n);
     printf("\nIntroduzca un exponente: ");
