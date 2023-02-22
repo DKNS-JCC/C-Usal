@@ -1,68 +1,69 @@
-
 #include <stdio.h>
+
 #define FIL 50
 #define COL 50
 
+int primerMaximoLocal(int mat[][COL], int filas, int columnas, int* fila, int* columna);
 
-int primerMaximoLocal(int (*m)[COL], int fil, int col, int *maxfil, int *maxcol);
-int main(void)
-{
-    int matrizA[FIL][COL];
+int main(void) {
+    int matriz[FIL][COL];
     int filas, columnas;
-    int filM, colM;
-    int i, j;
+    int fila_maximo, columna_maximo;
+    
+    do {
+        printf("Introduce el número de filas (máximo %d): ", FIL);
+        scanf("%d", &filas);
+    } while (filas < 1 || filas > FIL);
 
-    printf("Introduce el numero de filas: ");
-    scanf("%d", &filas);
-    printf("Introduce el numero de columnas: ");
-    scanf("%d", &columnas);
+    do {
+        printf("Introduce el número de columnas (máximo %d): ", COL);
+        scanf("%d", &columnas);
+    } while (columnas < 1 || columnas > COL);
 
-    for (i = 0; i < filas; i++)
-    {
-        for (j = 0; j < columnas; j++)
-        {
-            printf("Introduce el valor de la posicion %d,%d: ", i, j);
-            scanf("%d", &matrizA[i][j]);
+    printf("Introduce los elementos de la matriz:\n");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("Fila %d, Columna %d: ", i + 1, j + 1);
+            scanf("%d", &matriz[i][j]);
         }
     }
 
-    for (i = 0; i < filas; i++)
-    {
-        for (j = 0; j < columnas; j++)
-        {
-            printf("%d  ", matrizA[i][j]);
-        }
-        printf("\n");
+    // Encontrar el primer máximo local de la matriz
+    int encontrado = primerMaximoLocal(matriz, filas, columnas, &fila_maximo, &columna_maximo);
+
+    if (encontrado) {
+        printf("El primer máximo local se encuentra en la fila %d, columna %d.\n", fila_maximo + 1, columna_maximo + 1);
+    } else {
+        printf("La matriz no tiene máximos locales.\n");
     }
-    if (primerMaximoLocal(matrizA, filas, columnas, &filM, &colM))
-        printf("Maximo local en columna %d, fila %d",filM, colM);
-    else
-        printf("No es maximo local");
+
     return 0;
 }
-int primerMaximoLocal(int (*m)[COL], int fil, int col, int *maxfil, int *maxcol)
-{
-    int f, c, fe, ce, maximo;
-    for (f = 1; f < fil - 1; f++)
-    {
-        for (c = 1; c < col - 1; c++)
-        {
-            maximo = 1;
-            for (fe = f - 1; fe <= (f + 1) && maximo; fe++)
-            {
-                for (ce = c - 1; ce <= (c + 1) && maximo; ce++)
-                {
-                    if (m[f][c] <= m[fe][ce] && (fe != f || ce != c))
-                        maximo = 0;
+
+int primerMaximoLocal(int mat[][COL], int filas, int columnas, int* fila, int* columna) {
+    for (int i = 1; i < filas - 1; i++) {
+        for (int j = 1; j < columnas - 1; j++) {
+            int valor_actual = mat[i][j];
+
+            // Comprobar si es un máximo local
+            int es_maximo_local = 1;
+            for (int k = i-1; k <= i+1; k++) {
+                for (int l = j-1; l <= j+1; l++) {
+                    if (mat[k][l] >= valor_actual && (k != i || l != j)) {
+                        es_maximo_local = 0;
+                        break;
+                    }
                 }
+                if (!es_maximo_local) break;
             }
-            if (!maximo)
-            {
-                *maxfil = f;
-                *maxcol = c;
+
+            if (es_maximo_local) {
+                *fila = i;
+                *columna = j;
                 return 1;
             }
         }
     }
+
     return 0;
 }
