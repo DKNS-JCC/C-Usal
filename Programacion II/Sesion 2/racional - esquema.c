@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <ctype.h>
-#include <locale.h>
 
+/* ---------------------------------------------------------- */
 /* Definiciones globales                                      */
-
+/* ---------------------------------------------------------- */
 typedef struct
 {
    int num;   /* Numerador   */
@@ -29,7 +29,6 @@ int mcd(int, int);
 
 int main(void)
 {
-   setlocale(LC_ALL, "es_ES");
    char respuesta;
 
    Presentacion();
@@ -49,7 +48,6 @@ int main(void)
 
    printf("\n");
    return 0;
-
 }
 
 void moduloPrincipal(void)
@@ -146,6 +144,7 @@ Racional divideRacional(Racional a, Racional b)
 
 void mostrarRacional(Racional r)
 {
+   simplificaRacional(&r);
    if (r.denom != 1 && r.denom > 0)
    {
       printf("%d / %d", r.num, r.denom);
@@ -166,7 +165,8 @@ void mostrarRacional(Racional r)
 
 void simplificaRacional(Racional *r)
 {
-   r->denom/=
+   r->denom /= mcd(r->denom, r->num);
+   r->num /= mcd(r->denom, r->num);
 }
 
 int mcd(int a, int b)
