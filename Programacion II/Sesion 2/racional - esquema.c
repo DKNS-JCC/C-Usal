@@ -115,14 +115,15 @@ void sumaRacional(Racional a, Racional b, Racional *r)
    a.num = a.num * (r->denom / a.denom);
    b.num = b.num * (r->denom / b.denom);
    r->num = a.num + b.num;
+   simplificaRacional(r);
 }
 void restaRacional(Racional a, Racional b, Racional *r)
 {
-
    r->denom = (a.denom * b.denom);
    a.num = a.num * (r->denom / a.denom);
    b.num = b.num * (r->denom / b.denom);
    r->num = a.num - b.num;
+   simplificaRacional(r);
 }
 Racional multiplicaRacional(Racional a, Racional b)
 {
@@ -130,21 +131,21 @@ Racional multiplicaRacional(Racional a, Racional b)
    Racional resultado;
    resultado.denom = (a.denom * b.denom);
    resultado.num = (a.num * b.num);
+   simplificaRacional(&resultado);
    return resultado;
 }
 
 Racional divideRacional(Racional a, Racional b)
 {
-
    Racional resultado;
-   resultado.denom = (a.num * b.denom);
-   resultado.num = (a.denom * b.num);
+   resultado.num = (a.num * b.denom);
+   resultado.denom = (a.denom * b.num);
+   simplificaRacional(&resultado);
    return resultado;
 }
 
 void mostrarRacional(Racional r)
 {
-   simplificaRacional(&r);
    if (r.denom != 1 && r.denom > 0)
    {
       printf("%d / %d", r.num, r.denom);
@@ -165,8 +166,10 @@ void mostrarRacional(Racional r)
 
 void simplificaRacional(Racional *r)
 {
-   r->denom /= mcd(r->denom, r->num);
-   r->num /= mcd(r->denom, r->num);
+   int mcd1;
+   mcd1 = mcd(r->denom, r->num);
+   r->denom /= mcd1;
+   r->num /= mcd1;
 }
 
 int mcd(int a, int b)
