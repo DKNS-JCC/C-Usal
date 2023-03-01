@@ -1,22 +1,8 @@
-/* Fuente: PUNTO2D.C
-   Programa: MANEJO DE LOS PUNTOS DEL PLANO MEDIANTE ESTRUCTURAS
-   Descripci�n: Mediante funciones que manejAn estructuras que representAn los puntos del plano,
-   se realizan las siguientes operaciones.
-       - Leer un punto de teclado
-       - Presentar un punto en pantalla
-       - Dados dos puntos, calcular la distancia entre ellos
-       - Dados dos puntos, determinar el punto medio de la l�nea que los une.
-       - Dados dos puntos, indicar que figura definen
-       - Dados dos puntos, calcular el area de la figura que definen
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <ctype.h>
 
-/* ---------------------------------------------------------- */
-/* Definiciones globales                                      */
-/* ---------------------------------------------------------- */
 typedef struct
 {
     float x;
@@ -32,9 +18,6 @@ typedef enum
     LINEA_HORIZONTAL
 } Figura;
 
-/* ---------------------------------------------------------- */
-/* Prototipos                                                 */
-/* ---------------------------------------------------------- */
 void ModuloPrincipal(void);
 void Presentacion(void);
 void LeerPunto(Punto *);
@@ -44,10 +27,9 @@ Punto PuntoMedio(Punto, Punto);
 Figura FiguraDefinenPuntos(Punto, Punto);
 float AreaFiguraPuntos(Punto, Punto);
 
-/* ---------------------------------------------------------- */
 int main(void)
 {
-    /* ---------------------------------------------------------- */
+
     char respuesta;
 
     system("cls");
@@ -67,13 +49,11 @@ int main(void)
     } while (respuesta != 'N');
 
     return 0;
+}
 
-} /* Fin del main */
-
-/* ---------------------------------------------------------- */
 void ModuloPrincipal(void)
 {
-    /* ---------------------------------------------------------- */
+
     Punto p1, p2, ptot;
     float dist, area;
     Figura figu;
@@ -121,37 +101,30 @@ void ModuloPrincipal(void)
     printf("\n El area de la figura que definen los puntos es: %f unidades cuadradas", area);
 }
 
-/* ---------------------------------------------------------- */
 void LeerPunto(Punto *p)
 {
-    /* ---------------------------------------------------------- */
+
     printf("Coordenada X? ");
     scanf("%f", &p->x);
     printf("Coordenada Y? ");
     scanf("%f", &p->y);
 }
 
-/* ---------------------------------------------------------- */
 void EscribirPunto(Punto p)
 {
-    /* ---------------------------------------------------------- */
     printf("(%4.2f, %4.2f)", p.x, p.y);
 }
 
-/* ---------------------------------------------------------- */
 float DistanciaPuntos(Punto p1, Punto p2)
 {
-    /* ---------------------------------------------------------- */
 
     float dist;
     dist = sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
     return dist;
 }
 
-/* ---------------------------------------------------------- */
 Punto PuntoMedio(Punto p1, Punto p2)
 {
-    /* ---------------------------------------------------------- */
 
     Punto pm;
     pm.x = (p1.x + p2.x) / 2;
@@ -159,10 +132,8 @@ Punto PuntoMedio(Punto p1, Punto p2)
     return pm;
 }
 
-/* ---------------------------------------------------------- */
 Figura FiguraDefinenPuntos(Punto p1, Punto p2)
 {
-    /* ---------------------------------------------------------- */
 
     Figura forma;
     if (p1.x == p2.x && p1.y == p2.y)
@@ -178,20 +149,17 @@ Figura FiguraDefinenPuntos(Punto p1, Punto p2)
     return forma;
 }
 
-/* ---------------------------------------------------------- */
 float AreaFiguraPuntos(Punto p1, Punto p2)
 {
-    /* ---------------------------------------------------------- */
 
     float area;
     area = fabs(p1.x - p2.x) * fabs(p1.y - p2.y);
     return area;
 }
 
-/* ---------------------------------------------------------- */
 void Presentacion(void)
 {
-    /* ---------------------------------------------------------- */
+
     puts("DISTANCIA ENTRE PUNTOS DEL PLANO");
     puts("================================");
     puts("Dados dos puntos del plano, calcula la distancia y el punto medio entre ellos.");
