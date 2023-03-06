@@ -25,14 +25,14 @@ int main (void) {
 
 /* Se lee el n�mero de filas de la primera matriz (A) -------- */
   do
-   { printf("�N�mero filas matriz A (m�x. %d)?: ", FIL);
+   { printf("Numero filas matriz A (max. %d)?: ", FIL);
      scanf("%d", &filA);
    } while ((filA <=0) || (filA > FIL));
 
 
 /* Se lee el n�mero de columnas de la primera matriz (A) ------ */
   do
-   { printf("�N�mero columnas matriz A (m�x. %d)?: ", COL);
+   { printf("Numero columnas matriz A (max. %d)?: ", COL);
      scanf("%d", &colA);
    } while ((colA <=0) || (colA > COL));
 
@@ -43,7 +43,7 @@ int main (void) {
 
 /* Se lee el n�mero de columnas de la segunda matriz (B) ------ */
   do
-  { printf("�N�mero columnas matriz B (m�x. %d)?: ", COL);
+  { printf("Numero columnas matriz B (max. %d)?: ", COL);
     scanf("%d", &colB);
   } while ((colB <=0) || (colB > COL));
 
