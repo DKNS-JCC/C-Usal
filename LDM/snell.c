@@ -1,37 +1,39 @@
 #include <stdio.h>
 #include <math.h>
-#define M_PI 3.141615
+#include <stdlib.h>
+
 
 int main() {
     float angulo_incidente, indice_refraccion_1, indice_refraccion_2, angulo_refractado, angulo_critico;
 
     // Pedir los valores de entrada
-    printf("Introduzca el ángulo de incidencia en grados: ");
+    printf("Introduzca el angulo de incidencia en grados: ");
     scanf("%f", &angulo_incidente);
-    printf("Introduzca el índice de refracción del primer medio: ");
+    printf("Introduzca el índice de refraccion del primer medio: ");
     scanf("%f", &indice_refraccion_1);
-    printf("Introduzca el índice de refracción del segundo medio: ");
+    printf("Introduzca el índice de refraccion del segundo medio: ");
     scanf("%f", &indice_refraccion_2);
 
-    // Convertir el ángulo de incidencia a radianes
+    // Convertir el angulo de incidencia a radianes
     float angulo_rad = angulo_incidente * M_PI / 180.0;
 
-    // Calcular el ángulo crítico
+    // Calcular el angulo crítico
     angulo_critico = asin(indice_refraccion_2 / indice_refraccion_1);
 
-    // Comprobar si se produce reflexión total
+    // Comprobar si se produce reflexion total
     if (angulo_rad > angulo_critico) {
-        printf("Se produce reflexión total.\n");
+        printf("Se produce reflexion total.\n");
     } else {
-        // Calcular el ángulo de refracción usando la ley de Snell
+        // Calcular el angulo de refraccion usando la ley de Snell
         angulo_refractado = asin((indice_refraccion_1 / indice_refraccion_2) * sin(angulo_rad));
 
-        // Convertir el ángulo de refracción a grados
+        // Convertir el angulo de refraccion a grados
         float angulo_refractado_grados = angulo_refractado * 180.0 / M_PI;
 
         // Mostrar el resultado
-        printf("El ángulo de refracción es: %.2f grados\n", angulo_refractado_grados);
+        printf("El angulo de refraccion es: %.2f grados\n", angulo_refractado_grados);
     }
+    system ("PAUSE");
 
     return 0;
 }

@@ -25,10 +25,8 @@ int main(void) {
   char  terminar;      /* Para pedir al usuario terminar o no          */
 
 
-/* Presentaci�n del programa
-   ---------------------------------------
-*/
-  system ("cls");  /* Borrado de la pantalla */
+
+  system ("cls");
   printf("C�lculo vectorial\n");
   printf("=================\n");
   printf("Se pedir�n por pantalla dos vectores y se presentar�:\n");
@@ -38,11 +36,9 @@ int main(void) {
   printf("El programa permite trabajar con vectores de dimensi�n "
          "m�xima %d.\n", DIMMAX);
 
-  do  /*--1--*/
+  do 
   {
-    /* Petici�n y validaci�n de datos
-       ---------------------------------------
-     */
+
        do
        { printf("Dimensi�n de los vectores (entre 1 y %d)?: ", DIMMAX);
          scanf("%d", &diml);
@@ -61,17 +57,6 @@ int main(void) {
               scanf("%f", &vector2[i]);
             }
 
-   /* C�lculos
-       ---------------------------------------
-    */
-
-    /* M�dulo
-     *	     -----------------------
-     *	    /	 2    2          2
-     *      \  /	v  + v  + ... + v
-     * m =   \/    1    2          n
-     *
-     */
         modulov1 = modulov2 = 0;
         for (i=0; i < diml; i++)
             { modulov1 += vector1[i] * vector1[i];
@@ -81,27 +66,17 @@ int main(void) {
         modulov1 = sqrt (modulov1);
         modulov2 = sqrt (modulov2);
 
-    /* Vector suma
-     *	        
-     *  V1 + V2 = ( v1 + v2 , v1 + v2 , ... , v1 + v2  )
-     *                1    1    2    2          n    n
-     */
+
         for (i=0; i < diml; i++)
             vsuma[i] = vector1[i] + vector2[i];
 
-    /* Producto escalar
-     *	        
-     *  V1 x V2 =  v1 v2 + v1 v2 + ... + v1 v2
-     *               1  1    2  2          n  n
-     */
+
         prod_escalar = 0;
         for (i=0; i < diml; i++)
             prod_escalar += vector1[i] * vector2[i];
 
  
-    /* Resultados
-       ---------------------------------------
-    */
+
        puts("\nVectores introducidos:");
        printf("V1 = (%g", vector1[0]);
        for (i=1; i < diml; i++)
@@ -130,14 +105,14 @@ int main(void) {
 
        do
        {  printf("Salir del programa (S/N)?: "); 
-          fflush(stdin);  /* Vaciado del buffer de teclado */
+          fflush(stdin);  
           scanf("%c", &terminar);
           terminar = toupper(terminar);
        } while (terminar != 'S' && terminar != 'N');
         
-       system ("cls");  /* Borrado de la pantalla */
+       system ("cls");  
 
-  } while (terminar != 'S'); /*--cierre de 1--*/
+  } while (terminar != 'S'); 
 
   return 0;
 }
