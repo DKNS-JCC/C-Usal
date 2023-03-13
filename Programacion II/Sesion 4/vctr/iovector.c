@@ -1,4 +1,5 @@
-
+#include <stdio.h>
+#include <math.h>
 int solicitar_vector(float *vector1, float *vector2, int DIMMAX)
 {
     int diml = 0, i = 0;

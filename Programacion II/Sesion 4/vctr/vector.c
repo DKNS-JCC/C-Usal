@@ -1,4 +1,5 @@
-
+#include <stdio.h>
+#include <math.h>
 void modulo_vector(float *vector1, float *vector2, int diml)
 {
     float modulov1, modulov2;
