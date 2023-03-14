@@ -24,6 +24,7 @@ int main(void)
    {
 
       diml = solicitar_vector(vector1, vector2, DIMMAX);
+      printf("diml=%d", diml);
       presentar_vector(vector1, vector2, diml);
       modulo_vector(vector1, vector2, diml);
       suma_vector(vector1, vector2, diml);

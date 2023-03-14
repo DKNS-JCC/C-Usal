@@ -33,7 +33,7 @@ int main(void)
 
    Presentacion();
    do
-   {
+   {  
       printf("\n");
       moduloPrincipal();
       printf("\n");
